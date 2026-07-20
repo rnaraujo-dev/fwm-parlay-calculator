@@ -1,7 +1,7 @@
 {
-  "name": "FWM Bets – Parlay Calculator",
+  "name": "Elevated Bets – Parlay Calculator",
   "short_name": "Parlay Calculator",
-  "description": "Build parlays, calculate payouts, and size bets with Light / Regular / Max bankroll tiers. Powered by FWM Bets.",
+  "description": "Build parlays, calculate payouts, and size bets with Light / Regular / Max bankroll tiers. Powered by Elevated Bets.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,17 +10,17 @@
   "background_color": "#050505",
   "icons": [
     {
-      "src": "fwm_bets_logo_favicon.png",
+      "src": "elevated_bets_logo_favicon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "fwm_bets_logo_favicon.png",
+      "src": "elevated_bets_logo_favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "fwm_bets_logo_transparent.png",
+      "src": "elevated_bets_logo_transparent.png",
       "sizes": "1024x1024",
       "type": "image/png"
     }
