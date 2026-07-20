@@ -3,29 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <title>Elevated Bets – Parlay Calculator</title>
-  <link rel="icon" type="image/png" href="fwm_bets_logo_favicon.png" />
+  <link rel="icon" type="image/png" href="elevated_bets_logo_favicon.png" />
 
   <!-- Mobile Home Screen Icons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="fwm_bets_logo_favicon.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="fwm_bets_logo_favicon.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="fwm_bets_logo_favicon.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="fwm_bets_logo_favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="elevated_bets_logo_favicon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="elevated_bets_logo_favicon.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="elevated_bets_logo_favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="elevated_bets_logo_favicon.png">
 
   <!-- Android Chrome App Icon -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#00FF85">
+  <meta name="theme-color" content="#0e1526">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root {
-      --bg-main: #050505;
-      --bg-card: #0A0A0A;
-      --accent: #00FF85;
-      --accent-soft: rgba(0, 255, 133, 0.12);
+      --bg-main: #0e1526;
+      --bg-card: #131c33;
+      --accent: #f5c92a;
+      --accent-soft: rgba(245, 201, 42, 0.12);
+      --blue: #1b76b1;
+      --blue-soft: rgba(27, 118, 177, 0.35);
       --text-main: #f9f9f9;
-      --text-muted: #a0a0a0;
-      --border-subtle: #1b1b1b;
+      --text-muted: #9aa7bd;
+      --border-subtle: #223052;
       --danger: #ff4d4f;
       --warning: #ffc53d;
     }
@@ -39,7 +41,7 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151515 0, #050505 55%);
+      background: radial-gradient(circle at top, #1a2542 0, #0e1526 55%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -51,7 +53,7 @@
     .app {
       width: 100%;
       max-width: 960px;
-      background: rgba(5, 5, 5, 0.95);
+      background: rgba(14, 21, 38, 0.95);
       border-radius: 20px;
       border: 1px solid var(--border-subtle);
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
@@ -85,7 +87,7 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--accent-soft);
-      background: linear-gradient(135deg, rgba(0, 255, 133, 0.08), transparent);
+      background: linear-gradient(135deg, rgba(245, 201, 42, 0.08), transparent);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -125,8 +127,8 @@
       letter-spacing: 0.14em;
       padding: 2px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 255, 133, 0.4);
-      background: rgba(0, 255, 133, 0.05);
+      border: 1px solid rgba(245, 201, 42, 0.4);
+      background: rgba(245, 201, 42, 0.05);
       color: var(--accent);
     }
 
@@ -191,8 +193,8 @@
       color: var(--accent);
       padding: 8px 10px;
       border-radius: 10px;
-      background: rgba(0, 255, 133, 0.06);
-      border: 1px solid rgba(0, 255, 133, 0.35);
+      background: rgba(245, 201, 42, 0.06);
+      border: 1px solid rgba(245, 201, 42, 0.35);
     }
 
     input[type="number"],
@@ -200,7 +202,7 @@
       width: 100%;
       border-radius: 10px;
       border: 1px solid var(--border-subtle);
-      background: #050505;
+      background: #0e1526;
       padding: 9px 10px;
       color: var(--text-main);
       font-size: 14px;
@@ -210,13 +212,13 @@
 
     input[type="number"]::placeholder,
     input[type="text"]::placeholder {
-      color: #555;
+      color: #5c6a85;
     }
 
     input[type="number"]:focus,
     input[type="text"]:focus {
-      border-color: rgba(0, 255, 133, 0.7);
-      box-shadow: 0 0 0 1px rgba(0, 255, 133, 0.25);
+      border-color: rgba(245, 201, 42, 0.7);
+      box-shadow: 0 0 0 1px rgba(245, 201, 42, 0.25);
     }
 
     input[type="number"]::-webkit-outer-spin-button,
@@ -235,7 +237,7 @@
     .leg-card {
       border-radius: 14px;
       border: 1px solid var(--border-subtle);
-      background: linear-gradient(145deg, #050505, #101010);
+      background: linear-gradient(145deg, #0e1526, #182342);
       padding: 10px 11px 9px;
       position: relative;
       overflow: hidden;
@@ -245,7 +247,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top left, rgba(0, 255, 133, 0.14), transparent 55%);
+      background: radial-gradient(circle at top left, rgba(27, 118, 177, 0.22), transparent 55%);
       opacity: 0.9;
       pointer-events: none;
     }
@@ -280,7 +282,7 @@
       border: 1px solid var(--border-subtle);
       padding: 2px 7px;
       cursor: pointer;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.4);
       color: var(--text-muted);
     }
 
@@ -342,8 +344,8 @@
 
     .summary-badge.safe {
       color: var(--accent);
-      border-color: rgba(0, 255, 133, 0.5);
-      background: rgba(0, 255, 133, 0.06);
+      border-color: rgba(245, 201, 42, 0.5);
+      background: rgba(245, 201, 42, 0.06);
     }
 
     .summary-badge.warn {
@@ -375,7 +377,7 @@
     .tier-card {
       border-radius: 12px;
       border: 1px solid var(--border-subtle);
-      background: #050505;
+      background: #0e1526;
       padding: 8px 9px 8px;
       display: flex;
       flex-direction: column;
@@ -386,7 +388,7 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--text-muted);
+      color: var(--blue);
     }
 
     .tier-name {
@@ -410,7 +412,7 @@
       align-self: flex-start;
       border-radius: 999px;
       border: 1px solid var(--accent);
-      background: rgba(0, 255, 133, 0.06);
+      background: rgba(245, 201, 42, 0.06);
       color: var(--accent);
       font-size: 11px;
       padding: 4px 8px;
@@ -421,7 +423,7 @@
     }
 
     .tier-use-btn:hover {
-      background: rgba(0, 255, 133, 0.14);
+      background: rgba(245, 201, 42, 0.14);
     }
 
     /* BUTTONS / FOOTER */
@@ -434,7 +436,7 @@
     button {
       border-radius: 999px;
       border: 1px solid var(--accent);
-      background: rgba(0, 255, 133, 0.08);
+      background: rgba(245, 201, 42, 0.08);
       color: var(--accent);
       font-size: 12px;
       padding: 7px 11px;
@@ -446,36 +448,35 @@
     }
 
     button:hover {
-      background: rgba(0, 255, 133, 0.16);
+      background: rgba(245, 201, 42, 0.16);
       transform: translateY(-0.5px);
-      box-shadow: 0 0 0 1px rgba(0, 255, 133, 0.25);
+      box-shadow: 0 0 0 1px rgba(245, 201, 42, 0.25);
     }
-    
+
     /* RESET BUTTON (matches bankroll calculator style) */
-.reset-btn {
-  border-radius: 999px;
-  border: 1px solid var(--accent);
-  background: rgba(0, 255, 133, 0.06);
-  color: var(--accent);
-  font-size: 12px;
-  padding: 7px 11px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.15s ease-out;
-}
+    .reset-btn {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: rgba(245, 201, 42, 0.06);
+      color: var(--accent);
+      font-size: 12px;
+      padding: 7px 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease-out;
+    }
 
-.reset-btn:hover {
-  background: rgba(0, 255, 133, 0.14);
-  transform: translateY(-0.5px);
-  box-shadow: 0 0 0 1px rgba(0, 255, 133, 0.25);
-}
-
+    .reset-btn:hover {
+      background: rgba(245, 201, 42, 0.14);
+      transform: translateY(-0.5px);
+      box-shadow: 0 0 0 1px rgba(245, 201, 42, 0.25);
+    }
 
     button.secondary {
       border-color: var(--border-subtle);
-      background: #050505;
+      background: #0e1526;
       color: var(--text-main);
     }
 
@@ -531,11 +532,11 @@
   <div class="app">
     <!-- HEADER -->
     <div class="header">
-      <img class="brand-logo" src="fwm_bets_logo_transparent.png" alt="FWM Bets Logo" />
+      <img class="brand-logo" src="elevated_bets_logo_transparent.png" alt="Elevated Bets Logo" />
 
-      <div class="cta-chip" onclick="window.open('https://whop.com/fwm-bets/', '_blank')">
+      <div class="cta-chip" onclick="window.open('https://whop.com/elevated-vip/elevated-vip?a=fwmnick20', '_blank')">
         <span class="icon">👾</span>
-        <span>Join for FREE Access</span>
+        <span>Join for 3-Day Trial</span>
       </div>
     </div>
 
@@ -575,7 +576,7 @@
       <div class="section-header">
         <div class="section-title">2. Parlay Builder</div>
         <div class="section-caption">
-          Add your legs. Works with FWM plays or any bets you like.
+          Add your legs. Works with Elevated Bets plays or any bets you like.
         </div>
       </div>
 
@@ -718,8 +719,6 @@
 
     const legsContainer = document.getElementById('legs-container');
     const addLegBtn = document.getElementById('add-leg-btn');
-
-    const copyLinkBtn = document.getElementById('copy-link-btn');
 
     // ====== HELPERS ======
     function parseBankroll() {
@@ -985,18 +984,6 @@
       });
     });
 
-    copyLinkBtn.addEventListener('click', () => {
-      const url = window.location.href;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(
-          () => alert('Link copied! Share this parlay calculator with your squad.'),
-          () => alert('Could not copy link. You can still share the page URL manually.')
-        );
-      } else {
-        alert('Copy not supported in this browser. Share the page URL manually.');
-      }
-    });
-
     // ====== INIT ======
     function resetParlay() {
   bankrollInput.value = "";
@@ -1015,7 +1002,6 @@
 }
 
 document.getElementById("reset-btn").addEventListener("click", resetParlay);
-    document.getElementById('year').textContent = new Date().getFullYear();
     ensureAtLeastOneLeg();
     recalcAll();
   </script>
