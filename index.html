@@ -106,13 +106,6 @@
       margin-top: 10px;
     }
 
-    .brand {
-      font-size: 14px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
     h1 {
       font-size: 22px;
       font-weight: 650;
@@ -135,6 +128,36 @@
     .subtitle {
       font-size: 13px;
       color: var(--text-muted);
+    }
+
+    /* CALCULATOR NAV */
+    .calc-nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0 14px;
+    }
+
+    .calc-nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .calc-nav a:hover {
+      border-color: var(--blue);
+      color: var(--text-main);
+    }
+
+    .calc-nav a.active {
+      border-color: rgba(245, 201, 42, 0.5);
+      background: rgba(245, 201, 42, 0.06);
+      color: var(--accent);
     }
 
     /* SECTIONS */
@@ -227,6 +250,33 @@
       margin: 0;
     }
 
+    /* SIGN TOGGLE */
+    .sign-toggle {
+      min-width: 44px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 10px;
+      border: 1px solid var(--blue);
+      background: rgba(27, 118, 177, 0.12);
+      color: var(--text-main);
+      cursor: pointer;
+      align-self: stretch;
+      padding: 0 10px;
+      transition: all 0.12s ease-out;
+    }
+
+    .sign-toggle.negative {
+      color: #ff8a8c;
+      border-color: rgba(255, 77, 79, 0.6);
+      background: rgba(255, 77, 79, 0.08);
+    }
+
+    .sign-toggle.positive {
+      color: #7fe0a7;
+      border-color: rgba(70, 200, 130, 0.6);
+      background: rgba(70, 200, 130, 0.08);
+    }
+
     /* LEG CARDS */
     .legs-container {
       display: flex;
@@ -304,7 +354,10 @@
 
     .leg-odds-input {
       flex: 1;
-      min-width: 120px;
+      min-width: 130px;
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
     }
 
     .leg-odds-hint {
@@ -315,6 +368,22 @@
     .leg-odds-converted {
       font-size: 12px;
       color: var(--accent);
+    }
+
+    .odds-format-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1px 7px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .odds-format-tag.on {
+      border-color: rgba(27, 118, 177, 0.7);
+      color: #6bbdea;
+      background: rgba(27, 118, 177, 0.1);
     }
 
     /* SUMMARY / BADGES */
@@ -331,6 +400,23 @@
     .summary-main span.value {
       color: var(--accent);
       font-weight: 600;
+    }
+
+    .copy-btn {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 201, 42, 0.5);
+      background: rgba(245, 201, 42, 0.06);
+      color: var(--accent);
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .copy-btn:hover {
+      background: rgba(245, 201, 42, 0.14);
     }
 
     .summary-badge {
@@ -453,7 +539,7 @@
       box-shadow: 0 0 0 1px rgba(245, 201, 42, 0.25);
     }
 
-    /* RESET BUTTON (matches bankroll calculator style) */
+    /* RESET BUTTON */
     .reset-btn {
       border-radius: 999px;
       border: 1px solid var(--accent);
@@ -478,17 +564,6 @@
       border-color: var(--border-subtle);
       background: #0e1526;
       color: var(--text-main);
-    }
-
-    .footer {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--text-muted);
     }
 
     /* NOTES */
@@ -543,12 +618,19 @@
     <div class="title-group">
       <h1>
         Parlay Calculator
-        <span class="badge-live">v1 • beta</span>
+        <span class="badge-live">v2</span>
       </h1>
       <div class="subtitle">
         Build parlays, see payout, and size bets with
         <span style="color: var(--accent);">Light / Regular / Max</span> stakes.
       </div>
+    </div>
+
+    <!-- CALCULATOR NAV -->
+    <div class="calc-nav">
+      <a href="https://rnaraujo-dev.github.io/betting-hedge-calculator/">Hedge</a>
+      <a class="active" href="https://rnaraujo-dev.github.io/elevated-parlay-calculator/">Parlay</a>
+      <a href="https://rnaraujo-dev.github.io/betting-bankroll-calculator/">Bankroll</a>
     </div>
 
     <!-- 1. BANKROLL INPUT -->
@@ -564,6 +646,7 @@
         <input
           id="bankroll"
           type="number"
+          inputmode="decimal"
           min="0"
           step="1"
           placeholder="Enter amount (e.g. 100, 250, 500)"
@@ -606,6 +689,7 @@
         <input
           id="stake"
           type="number"
+          inputmode="decimal"
           min="0"
           step="1"
           placeholder="Enter your wager amount (or use a suggested stake)"
@@ -620,6 +704,7 @@
         <div class="summary-main">
           Potential return:
           <span class="value" id="parlay-return-display">$0.00</span>
+          <button type="button" class="copy-btn" id="copy-return-btn">📋 Copy</button>
         </div>
       </div>
 
@@ -678,10 +763,11 @@
         <div class="notes-title">4. Notes & Definitions</div>
         <ul>
           <li>
-            <strong>Odds Input</strong> – You can enter
-            <strong>American odds</strong> (e.g. <strong>-120</strong>, <strong>+150</strong>)
-            or <strong>decimal odds</strong> (e.g. <strong>1.83</strong>). Values below ~10
-            are treated as decimal by default.
+            <strong>Odds Input</strong> – Type the number and tap the
+            <strong>+/−</strong> button to set the sign for American odds
+            (e.g. <strong>120</strong> with <strong>−</strong>), or enter
+            <strong>decimal odds</strong> directly (e.g. <strong>1.83</strong>).
+            Values below ~10 are treated as decimal automatically.
           </li>
           <li>
             <strong>Light / Regular / Max stakes</strong> –
@@ -720,6 +806,8 @@
     const legsContainer = document.getElementById('legs-container');
     const addLegBtn = document.getElementById('add-leg-btn');
 
+    const copyReturnBtn = document.getElementById('copy-return-btn');
+
     // ====== HELPERS ======
     function parseBankroll() {
       const val = parseFloat(bankrollInput.value);
@@ -757,10 +845,11 @@
 
     /**
      * Accept either American or decimal odds:
-     * - If |value| < 10 → treat as decimal
-     * - Else → treat as American
+     * - If |value| < 10 → treat as decimal (sign toggle ignored)
+     * - Else → treat as American, sign comes from the leg's toggle
+     *   (a typed negative sign always wins)
      */
-    function parseOddsValue(rawVal) {
+    function parseOddsValue(rawVal, sign) {
       const val = parseFloat(rawVal);
       if (isNaN(val) || val === 0) {
         return null;
@@ -769,23 +858,28 @@
       let decimal, american;
       if (Math.abs(val) < 10) {
         // decimal input
-        decimal = val;
+        decimal = Math.abs(val);
         if (decimal <= 1) {
           return null;
         }
         american = decimalToAmerican(decimal);
+        return { decimal, american, format: 'decimal' };
       } else {
-        // american input
-        american = val;
+        // american input — sign from toggle unless typed negative
+        american = val < 0 ? val : sign * Math.abs(val);
+        if (Math.abs(american) < 100) {
+          return null;
+        }
         decimal = americanToDecimal(american);
+        return { decimal, american, format: 'american' };
       }
-      return { decimal, american };
     }
 
     // ====== LEG MANAGEMENT ======
     function createLegCard(index) {
       const card = document.createElement('div');
       card.className = 'leg-card';
+      card.dataset.sign = '-1';
 
       card.innerHTML = `
         <div class="leg-card-inner">
@@ -797,20 +891,25 @@
           <input
             type="text"
             class="leg-label-input"
-            placeholder="Describe the leg (e.g. Harden 25+ pts, Reaves 3+ 3PTM)"
+            placeholder="Describe the leg (optional)"
           />
 
           <div class="leg-odds-row">
             <div class="leg-odds-input">
+              <button type="button" class="sign-toggle negative leg-sign" aria-label="Toggle odds sign">−</button>
               <input
                 type="number"
                 class="leg-odds"
-                placeholder="Odds (e.g. -120 or 1.83)"
+                inputmode="decimal"
+                placeholder="Odds (e.g. 120 or 1.83)"
                 step="0.01"
               />
             </div>
             <div class="leg-odds-info">
-              <div class="leg-odds-hint">Enter American or decimal odds.</div>
+              <div class="leg-odds-hint">
+                <span class="odds-format-tag" data-format="american">American</span>
+                <span class="odds-format-tag" data-format="decimal">Decimal</span>
+              </div>
               <div class="leg-odds-converted">–</div>
             </div>
           </div>
@@ -820,6 +919,17 @@
       // Event: odds change triggers recalculation
       const oddsInput = card.querySelector('.leg-odds');
       oddsInput.addEventListener('input', recalcAll);
+
+      // Sign toggle
+      const signBtn = card.querySelector('.leg-sign');
+      signBtn.addEventListener('click', () => {
+        const newSign = card.dataset.sign === '-1' ? '1' : '-1';
+        card.dataset.sign = newSign;
+        signBtn.textContent = newSign === '1' ? '+' : '−';
+        signBtn.classList.toggle('positive', newSign === '1');
+        signBtn.classList.toggle('negative', newSign === '-1');
+        recalcAll();
+      });
 
       // Remove button
       const removeBtn = card.querySelector('.remove-leg');
@@ -870,9 +980,17 @@
       cards.forEach(card => {
         const oddsInput = card.querySelector('.leg-odds');
         const convertedEl = card.querySelector('.leg-odds-converted');
+        const formatTags = card.querySelectorAll('.odds-format-tag');
+        const sign = parseInt(card.dataset.sign, 10);
         const rawVal = oddsInput.value;
 
-        const parsed = parseOddsValue(rawVal);
+        const parsed = parseOddsValue(rawVal, sign);
+
+        // Format indicator
+        formatTags.forEach(tag => {
+          tag.classList.toggle('on', parsed !== null && tag.dataset.format === parsed.format);
+        });
+
         if (!parsed) {
           convertedEl.textContent = '–';
           return;
@@ -882,7 +1000,6 @@
         combinedDecimal *= parsed.decimal;
 
         const americanStr = (parsed.american > 0 ? '+' : '') + parsed.american.toString();
-        const decimalStr = parsed.decimal.toFixed(2);
         convertedEl.textContent = `${americanStr}`;
       });
 
@@ -898,7 +1015,6 @@
       const parlayAmerican = decimalToAmerican(parlayDecimal);
 
       const aStr = (parlayAmerican > 0 ? '+' : '') + parlayAmerican.toString();
-      const dStr = parlayDecimal.toFixed(2);
 
       parlayOddsDisplay.textContent = `${aStr}`;
 
@@ -984,24 +1100,35 @@
       });
     });
 
-    // ====== INIT ======
+    // Copy potential return
+    copyReturnBtn.addEventListener('click', () => {
+      const raw = parlayReturnDisplay.textContent.replace('$', '');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(raw).then(() => {
+          copyReturnBtn.textContent = '✅ Copied';
+          setTimeout(() => { copyReturnBtn.textContent = '📋 Copy'; }, 1500);
+        });
+      }
+    });
+
+    // ====== RESET / INIT ======
     function resetParlay() {
-  bankrollInput.value = "";
-  stakeInput.value = "";
-  parlayOddsDisplay.textContent = "N/A";
-  parlayReturnDisplay.textContent = "$0.00";
-  parlayProfitDisplay.textContent = "$0.00";
+      bankrollInput.value = "";
+      stakeInput.value = "";
+      parlayOddsDisplay.textContent = "N/A";
+      parlayReturnDisplay.textContent = "$0.00";
+      parlayProfitDisplay.textContent = "$0.00";
 
-  stakeRiskStatusEl.textContent = "Enter bankroll & stake for risk checks";
-  stakeRiskStatusEl.className = "summary-badge warn";
+      stakeRiskStatusEl.textContent = "Enter bankroll & stake for risk checks";
+      stakeRiskStatusEl.className = "summary-badge warn";
 
-  legsContainer.innerHTML = "";
-  ensureAtLeastOneLeg();
+      legsContainer.innerHTML = "";
+      ensureAtLeastOneLeg();
 
-  recalcAll();
-}
+      recalcAll();
+    }
 
-document.getElementById("reset-btn").addEventListener("click", resetParlay);
+    document.getElementById("reset-btn").addEventListener("click", resetParlay);
     ensureAtLeastOneLeg();
     recalcAll();
   </script>
